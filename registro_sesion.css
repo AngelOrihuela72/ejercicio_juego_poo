@@ -1,0 +1,173 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+#contenedor_principal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 97vh;
+    background-color: purple;
+}
+
+#contenedor_contenido {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    background-color: #09f;
+    border-radius: 100px;
+}
+
+#imagen_contenido {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 0;
+}
+
+.contenedor_nombre{
+    width: 300px;
+    position: absolute;
+    bottom: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.contenedor_correo {
+    width: 300px;
+    position: absolute;
+    bottom: 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.label {
+    margin-bottom: 10px;
+}
+
+.input {
+    width: 200px;
+    height: 30px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+.contenedor_contraseña {
+    width: 300px;
+    position: absolute;
+    bottom: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+button {
+    padding: 15px 25px;
+    border: unset;
+    border-radius: 15px;
+    color: #212121;
+    z-index: 1;
+    background: #e8e8e8;
+    position: relative;
+    font-weight: 1000;
+    font-size: 17px;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    transition: all 250ms;
+    overflow: hidden;
+    width: 200px;
+    height: 50px;
+    position: absolute;
+    top: 70%;
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 15px;
+    background-color: #212121;
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    transition: all 250ms
+}
+
+button:hover {
+    color: #e8e8e8;
+}
+
+button:hover::before {
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    --sz: 15px;
+    --c0: #000;
+    --c1: #c71175;
+    --ts: 50% / calc(var(--sz) * 8) calc(var(--sz) * 16);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    --dot: var(--c1) 0 calc(var(--sz) * 0.78),
+        #fff0 calc(calc(var(--sz) * 0.78) + 1px) 100%;
+    --dot2: radial-gradient(circle at 90% 0%, var(--dot)) var(--ts),
+        radial-gradient(circle at 65% 0%, var(--dot)) var(--ts),
+        radial-gradient(circle at 40% 0%, var(--dot)) var(--ts),
+        radial-gradient(circle at 15% 0%, var(--dot)) var(--ts);
+    --cg1: conic-gradient(from -90deg at 5% 51%, var(--c0) 0 90deg, #fff0 0 100%) var(--ts);
+    --cg2: conic-gradient(from -90deg at 25% 50%, var(--c1) 0 90deg, #fff0 0 100%) var(--ts);
+    --cg3: conic-gradient(from -90deg at 30% 38.5%,
+            var(--c0) 0 90deg,
+            #fff0 0 100%) var(--ts);
+    --cg4: conic-gradient(from -90deg at 50% 37.5%,
+            var(--c1) 0 90deg,
+            #fff0 0 100%) var(--ts);
+    --cg5: conic-gradient(from -90deg at 55% 26%, var(--c0) 0 90deg, #fff0 0 100%) var(--ts);
+    --cg6: conic-gradient(from -90deg at 75% 25%, var(--c1) 0 90deg, #fff0 0 100%) var(--ts);
+    --cg7: conic-gradient(from -90deg at 80% 13.5%,
+            var(--c0) 0 90deg,
+            #fff0 0 100%) var(--ts);
+    --cg8: conic-gradient(from -90deg at 100% 12.5%,
+            var(--c1) 0 90deg,
+            #fff0 0 100%) var(--ts);
+
+    background: var(--dot2), var(--dot2),
+        radial-gradient(circle at 90% 100%, var(--dot)) var(--ts),
+        radial-gradient(circle at 65% 100%, var(--dot)) var(--ts),
+        radial-gradient(circle at 40% 100%, var(--dot)) var(--ts),
+        radial-gradient(circle at 15% 100%, var(--dot)) var(--ts),
+        radial-gradient(circle at 90% 12.5%, var(--dot)) var(--ts),
+        radial-gradient(circle at 65% 25%, var(--dot)) var(--ts),
+        radial-gradient(circle at 40% 37.5%, var(--dot)) var(--ts),
+        radial-gradient(circle at 15% 50%, var(--dot)) var(--ts), var(--cg1),
+        var(--cg1), var(--cg2), var(--cg2), var(--cg3), var(--cg3), var(--cg4),
+        var(--cg4), var(--cg5), var(--cg5), var(--cg6), var(--cg6), var(--cg7),
+        var(--cg7), var(--cg8), var(--cg8),
+        linear-gradient(-45deg, #fff0 0 32.25%, #0002 50%, #000 77.5%) var(--ts),
+        linear-gradient(-45deg, #fff0 0 32.25%, #000 60%) var(--ts),
+        repeating-linear-gradient(90deg, var(--c0) 0 5%, var(--c1) 0 25%) var(--ts);
+}
+
+p{
+    position: absolute;
+    top: 60%;
+}
+
+p1:hover{
+    text-decoration: underline;
+}
