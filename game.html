@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Juego de Piedra, Papel o Tijera</title>
     <link rel="stylesheet" href="juego.css">
     <script src="juego.js"></script>
 </head>
@@ -13,7 +13,12 @@
     <div class="contenedor">
         <h1>Piedra, Papel o Tijera</h1>
         <div class="juego">
-            <input type="text" id="eleccionUsuario" placeholder="Escribe Piedra, Papel o Tijera">
+            <input type="text" id="eleccionUsuario" placeholder="Escribe Piedra, Papel o Tijera" disabled>
+            <div class="game-btns">
+                <button class="game-btn" data-choice="piedra">Piedra</button>
+                <button class="game-btn" data-choice="papel">Papel</button>
+                <button class="game-btn" data-choice="tijeras">Tijeras</button>
+            </div>
             <button onclick="juego.iniciar()">Jugar</button>
         </div>
         <div id="resultado"></div>
