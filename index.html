@@ -5,22 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesion</title>
     <link rel="stylesheet" href="inicio_sesion.css">
-    <script src="inicio_sesion.js"></script>
+    <script src="inicio_sesion.js" defer></script>
 </head>
 <body>
     <section id="contenedor_principal">
         <div id="contenedor_contenido">
-            <img id="imagen_contenido" src="user-icon-design-free-png.webp" alt="yo">
+            <img id="imagen_contenido" src="https://static.vecteezy.com/system/resources/previews/008/844/895/non_2x/user-icon-design-free-png.png" alt="yo">
             <div class="contenedor_correo">
-                <label class="label" for="text">Correo electronico:</label>
-                <input class="input" type="text">
+                <label class="label" for="correo">Correo electronico:</label>
+                <input class="input" type="email" id="correo" required placeholder="ejemplo@dominio.com">
             </div>
             <div class="contenedor_contraseña">
-                <label class="label" for="text">Contraseña:</label>
-                <input class="input" type="password">
+                <label class="label" for="contraseña">Contraseña:</label>
+                <input class="input" type="password" id="contraseña" required placeholder="Ingresa tu contraseña">
             </div>
-            <button><a href="juego.html">Iniciar sesion</a></button>
-            <p>¿No tienes una cuenta? <a class="registar" href="registro_sesion.html" >Registrate aqui</a></p>
+            <button type="submit">Iniciar sesión</button>
+            <p>No tienes cuenta? <p1><a href="registroSesion/registro_sesion.html">Regístrate aquí</a></p1></p>
         </div>
     </section>
 </body>
