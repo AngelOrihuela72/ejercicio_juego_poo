@@ -9,13 +9,14 @@ class Usuario {
 class SistemaUsuarios {
     constructor() {
         // cargo usuarios desde localStorage
-        this.usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
-        this.usuarioActual = null;
+        this.usuarios = JSON.parse(localStorage.getItem('usuarios')) || []; //uso el json parse para transformar el texto en un objeto
+        this.usuarioActual = null; //valor desconocido
     }
 
     guardarUsuarios() {
         // guardo usuarios en localStorage
-        localStorage.setItem('usuarios', JSON.stringify(this.usuarios));
+        localStorage.setItem('usuarios', JSON.stringify(this.usuarios)); // uso json stringify para convertir el objeto es un texto
+        // y uso el localstorage.setitem para guardar o actualizar
     }
 
     registrar(nombre, correo, contraseña) {
@@ -55,13 +56,23 @@ class SistemaUsuarios {
 class Juego {
     constructor() {
         this.opciones = ['piedra', 'papel', 'tijeras'];
+        this.opcionUsuario = ''; // Para guardar la elección del usuario
     }
 
-    jugar(opcionUsuario) {
+    jugar() {
+        if (!this.opcionUsuario) {
+            alert('¡Por favor, selecciona una opción!');
+            return;
+        }
+        
         // obtengo la opcion de la maquina de forma aleatoria
         const opcionMaquina = this.opciones[Math.floor(Math.random() * 3)];
-        const resultado = this.determinarGanador(opcionUsuario, opcionMaquina);
-        return `Tu elegiste ${opcionUsuario}. La máquina eligió ${opcionMaquina}. ${resultado}`;
+        const resultado = this.determinarGanador(this.opcionUsuario, opcionMaquina);
+        
+        // Actualizamos el resultado en el HTML
+        document.getElementById('resultado').innerText = `Tu elegiste ${this.opcionUsuario}. La máquina eligió ${opcionMaquina}. ${resultado}`;
+        document.getElementById('eleccionComputadora').innerText = `La máquina eligió: ${opcionMaquina}`;
+        document.getElementById('eleccionUsuarioTexto').innerText = `Tu elección fue: ${this.opcionUsuario}`;
     }
 
     determinarGanador(opcionUsuario, opcionMaquina) {
@@ -79,55 +90,21 @@ class Juego {
     }
 }
 
-const sistemaUsuarios = new SistemaUsuarios();
+// Se crea una instancia de juego
 const juego = new Juego();
 
-// Eventos para el registro de usuario
-if (document.getElementById('register-btn')) {
-    document.getElementById('register-btn').addEventListener('click', (event) => {
-        event.preventDefault(); // Evita el comportamiento por defecto del boton
-        const nombre = document.getElementById('register-name').value.trim();
-        const correo = document.getElementById('register-username').value.trim();
-        const contraseña = document.getElementById('register-password').value.trim();
-
-        // verifico que los campos no estén vacios
-        if (nombre && correo && contraseña) {
-            sistemaUsuarios.registrar(nombre, correo, contraseña);
-        } else {
-            alert('Por favor, completa todos los campos');
-        }
-    });
-}
-
-// Eventos para iniciar sesion
-if (document.getElementById('login-btn')) {
-    document.getElementById('login-btn').addEventListener('click', () => {
-        const correo = document.getElementById('login-username').value.trim();
-        const contraseña = document.getElementById('login-password').value.trim();
-
-        // verifico que los campos no esten vacios
-        if (correo && contraseña) {
-            sistemaUsuarios.iniciarSesion(correo, contraseña);
-        } else {
-            alert('Por favor, completa todos los campos');
-        }
-    });
-}
-
-// Eventos para el juego
+// Asignamos la elección del usuario cuando hace click en los botones
 if (document.querySelectorAll('.game-btn').length > 0) {
     document.querySelectorAll('.game-btn').forEach(button => {
         button.addEventListener('click', (event) => {
             const opcionUsuario = event.target.dataset.choice;
-            const resultado = juego.jugar(opcionUsuario);
-            document.getElementById('resultado').innerText = resultado;
+            juego.opcionUsuario = opcionUsuario;
+            document.getElementById('eleccionUsuario').value = opcionUsuario;  // Actualizamos el input con la elección
         });
     });
 }
 
-// Evento de cerrar sesion
-if (document.getElementById('logout-btn')) {
-    document.getElementById('logout-btn').addEventListener('click', () => {
-        sistemaUsuarios.cerrarSesion();
-    });
-}
+// Eventos para iniciar el juego cuando el usuario haga clic en el botón "Jugar"
+document.querySelector('button[onclick="juego.iniciar()"]').addEventListener('click', () => {
+    juego.jugar(); // Llama al método jugar() para iniciar la partida
+});
